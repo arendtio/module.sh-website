@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Module.sh on Module.sh</title>
+    <link>/</link>
+    <description>Recent content in Module.sh on Module.sh</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Sun, 15 Oct 2017 00:00:00 +0200</lastBuildDate>
+    <atom:link href="/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Frequently Asked Questions</title>
+      <link>/faq/faq/</link>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0200</pubDate>
+      
+      <guid>/faq/faq/</guid>
+      <description>
+
+&lt;h3 id=&#34;what-happens-when-the-repository-is-offline&#34;&gt;What happens when the repository is offline?&lt;/h3&gt;
+
+&lt;p&gt;Scripts won&amp;rsquo;t work. There are exceptions e.g., if the cache holds
+all required scripts, but in many cases the script just will not
+run. To avoid such a dependency on a working server you can compile
+your script into a static script with our &lt;a href=&#34;https://github.com/arendtio/mdl.sh/tree/master/module-tools&#34; target=&#34;_blank&#34;&gt;module
+compiler&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;what-is-the-difference-between-module-sh-and-mdl-sh&#34;&gt;What is the difference between module.sh and mdl.sh?&lt;/h3&gt;
+
+&lt;p&gt;Those are both domains of this project. The website is hosted on
+module.sh and the code repository on mdl.sh (which is module.sh with
+the vowels removed). We thought that it would be nice to have a
+short domain like mdl.sh to be used in the code.&lt;/p&gt;
+
+&lt;h3 id=&#34;why-do-you-use-cksum-and-not-something-more-secure-like-sha256sum&#34;&gt;Why do you use cksum and not something more secure like sha256sum?&lt;/h3&gt;
+
+&lt;p&gt;For POSIX compliance. To our knowledge cksum is part of POSIX and
+should be available on all POSIX compliant operating sytems.
+Nevertheless, for your own scripts you can choose something
+stronger. Just take a quick look at how the
+&lt;a href=&#34;https://github.com/arendtio/mdl.sh/tree/master/module&#34; target=&#34;_blank&#34;&gt;validation&lt;/a&gt;
+happens. For example:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;module &amp;quot;helloWorld&amp;quot; &amp;quot;https://mdl.sh/hello-world/hello-world-1.0.0.sh&amp;quot; &amp;quot;sha256sum-a37ed750daa549599dba74f66030bd351b41c6ea227c0b1cd596e7efc6a5cada&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>How to create a module</title>
+      <link>/doc/how-to-create-a-module/</link>
+      <pubDate>Tue, 06 Nov 2018 00:00:00 +0100</pubDate>
+      
+      <guid>/doc/how-to-create-a-module/</guid>
+      <description>
+
+&lt;p&gt;Next we are taking a look at how to create a module
+Creating a module is easy. In general, modules are just plain shell
+scripts.&lt;/p&gt;
+
+&lt;h2 id=&#34;requirements&#34;&gt;Requirements&lt;/h2&gt;
+
+&lt;p&gt;There are just two things to be aware of:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;a shebang MUST be present (e.g., &lt;code&gt;#!/bin/sh&lt;/code&gt;, if POSIX compliant)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;modules should assume the function &lt;code&gt;module&lt;/code&gt; is defined&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;example&#34;&gt;Example&lt;/h2&gt;
+
+&lt;p&gt;This example module (&amp;lsquo;Greeter&amp;rsquo;) takes one argument, the name, and
+writes a message containing that name to standard out. If no name is
+provided it writes an error message to standard error and returns
+error code 1:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;#!/bin/sh
+
+name=&amp;quot;$1&amp;quot;
+
+if [ &amp;quot;$name&amp;quot; != &amp;quot;&amp;quot; ]; then
+	printf &#39;Hello %s&#39; &amp;quot;$name&amp;quot;
+else
+	echo &amp;quot;No name provided to module Greeter&amp;quot; &amp;gt;/dev/stderr
+	return 1
+fi
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In order, to foster cooperation and the online availability of
+modules, module.sh doesn&amp;rsquo;t support importing modules from
+filesystem. So if you want to use your module you should place it on
+a web-server (e.g., example.org) and load it from there:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#!/bin/sh
+
+# load module.sh
+eval &amp;quot;$(curl -fsL &amp;quot;https://mdl.sh/latest&amp;quot;)&amp;quot;
+
+# load  module greeter
+module &amp;quot;greeter&amp;quot; &amp;quot;https://example.com/greeter.sh&amp;quot;
+
+# use module greeter
+greeter &amp;quot;Bob&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Executing that script should result in &lt;code&gt;Hello Bob&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Since we also acknowledge that for module developers it is an
+important feature to load modules from disk (which we required
+ourselves during the development of module.sh), we added an extra
+module &lt;a href=&#34;/doc/how-to-use-module-local/&#34;&gt;module-local&lt;/a&gt; to our
+repository (not published yet).&lt;/p&gt;
+
+&lt;h2 id=&#34;best-practices&#34;&gt;Best practices&lt;/h2&gt;
+
+&lt;p&gt;Since the strength of shell scripts is not its performance, but its
+compability to run on different platforms, we encurage POSIX
+compliance and correntness.&lt;/p&gt;
+
+&lt;h3 id=&#34;shebangs&#34;&gt;Shebangs&lt;/h3&gt;
+
+&lt;p&gt;If you have gone the extra mile to create a POSIX compliant script
+you can and should use the &lt;code&gt;#!/bin/sh&lt;/code&gt; shebang.&lt;/p&gt;
+
+&lt;p&gt;If you were lazy and used e.g., bash syntax, please use the modern
+&lt;code&gt;#!/usr/bin/env bash&lt;/code&gt; shebang.&lt;/p&gt;
+
+&lt;h3 id=&#34;options&#34;&gt;Options&lt;/h3&gt;
+
+&lt;p&gt;Modules should not set options themselves but should be able to run
+with the following configuration:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;set -eEuo pipefail
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This means abort script execution if&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;a command returned a non-zero error code outside of a condition
+clause (-e)&lt;/li&gt;
+&lt;li&gt;even in sub-shells (-E)&lt;/li&gt;
+&lt;li&gt;and pipes (-o pipefail)&lt;/li&gt;
+&lt;li&gt;or if an unbound/undefined variable is used (-u)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;shellcheck&#34;&gt;Shellcheck&lt;/h3&gt;
+
+&lt;p&gt;Another great way to help you writing awesome scripts is the tool
+&lt;a href=&#34;https://github.com/koalaman/shellcheck&#34; target=&#34;_blank&#34;&gt;shellcheck&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;publishing-on-mdl-sh&#34;&gt;Publishing on mdl.sh&lt;/h2&gt;
+
+&lt;p&gt;If you have followed the best practices and are willing to donate
+your script to the public domain, please feel free to create a pull
+request via &lt;a href=&#34;https://github.com/arendtio/mdl.sh&#34; target=&#34;_blank&#34;&gt;Github&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>How to use Module.sh</title>
+      <link>/doc/how-to-use-module.sh/</link>
+      <pubDate>Tue, 06 Nov 2018 00:00:00 +0100</pubDate>
+      
+      <guid>/doc/how-to-use-module.sh/</guid>
+      <description>
+
+&lt;p&gt;After &lt;a href=&#34;/#download&#34;&gt;downloading&lt;/a&gt; Module.sh it should be straight
+forward to use it.&lt;/p&gt;
+
+&lt;p&gt;At first it must be loaded, either by sourcing it:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;. &amp;quot;$(dirname &amp;quot;$(readlink -f &amp;quot;$0&amp;quot;)&amp;quot;)/module.sh&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Or by using the eval+curl chain:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;eval &amp;quot;$(curl -fsL &amp;quot;https://mdl.sh/latest&amp;quot;)&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;usage&#34;&gt;Usage&lt;/h2&gt;
+
+&lt;p&gt;The usage can be described as follows:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;module [-s] name url [checksum]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;So Module.sh takes&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;one optional flag &lt;code&gt;-s&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;two mandatory positional parameters&lt;/li&gt;
+&lt;li&gt;one optional positional parameter&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The optional flag &lt;code&gt;-s&lt;/code&gt; controls if module.sh executes the module in a
+sub-shell to preserve the global scope. In general, is should be not
+be set. The main use-case is writing a similar tool like module.sh
+which requires access to the global scope.&lt;/p&gt;
+
+&lt;p&gt;With the first manadatory argument you can control under which name
+you want to be able to reach the module. Within Module.sh we use the
+lower camel case reprensentation of the module name, but you are
+free to use whatever you like.&lt;/p&gt;
+
+&lt;p&gt;The second mandatory parameter is the url und which the module is
+accessable. The protocol must be HTTPS.&lt;/p&gt;
+
+&lt;p&gt;The last parameter is optional, but recommended. If set, it should
+contain a checksum for the module. The checksum consist of two parts
+which are separated by a &amp;lsquo;-&amp;rsquo;. The first part defines which program
+should be used to calculate the checksum, the second part is the
+first part of the checksum.&lt;/p&gt;
+
+&lt;h2 id=&#34;calculating-checksums&#34;&gt;Calculating checksums&lt;/h2&gt;
+
+&lt;p&gt;To calculate the checksum of the module &lt;code&gt;hello-world&lt;/code&gt; the following
+commands can be used:&lt;/p&gt;
+
+&lt;p&gt;For cksum:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;printf &#39;cksum-%s\n&#39; &amp;quot;$(printf &#39;%s&#39; &amp;quot;$(curl -fsL &amp;quot;https://mdl.sh/hello-world/hello-world-1.0.0.sh&amp;quot;)&amp;quot; | cksum | cut -d &#39; &#39; -f1)&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;For md5sum:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;printf &#39;md5sum-%s\n&#39; &amp;quot;$(printf &#39;%s&#39; &amp;quot;$(curl -fsL &amp;quot;https://mdl.sh/hello-world/hello-world-1.0.0.sh&amp;quot;)&amp;quot; | md5sum | cut -d &#39; &#39; -f1)&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In general, we recommend using cksum as it is part of POSIX. If the
+checksum should provide some security aspect you might want consider
+using sha256sum.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>How to use the compiler</title>
+      <link>/doc/how-to-use-the-compiler/</link>
+      <pubDate>Tue, 06 Nov 2018 00:00:00 +0100</pubDate>
+      
+      <guid>/doc/how-to-use-the-compiler/</guid>
+      <description>
+
+&lt;p&gt;The compiler can be use to turn scripts which use Module.sh into
+static scripts which contain all their dependecies and do not
+require Module.sh anymore. This is a great way to ensure a script
+will work even if the repository will be unavailable.&lt;/p&gt;
+
+&lt;h2 id=&#34;download&#34;&gt;Download&lt;/h2&gt;
+
+&lt;p&gt;You can download the compiler from&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://mdl.sh/module-tools/compiler-0.9.0.sh&#34; target=&#34;_blank&#34;&gt;https://mdl.sh/module-tools/compiler-0.9.0.sh&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;On the shell:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;curl -O https://mdl.sh/module-tools/compiler-0.9.0.sh
+chmod +x compiler-0.9.0.sh
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;usage&#34;&gt;Usage&lt;/h2&gt;
+
+&lt;p&gt;The compiler takes 2 arguments:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;the scripts file which should be compiled&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;the output file, which should not exist&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;./compiler-0.9.0.sh demo.sh demo-static.sh
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Understanding Module.sh</title>
+      <link>/doc/understanding-module.sh/</link>
+      <pubDate>Tue, 06 Nov 2018 00:00:00 +0100</pubDate>
+      
+      <guid>/doc/understanding-module.sh/</guid>
+      <description>
+
+&lt;p&gt;What Module.sh does is quite simple. The complexity comes alone from
+making it work under different conditions. So it should be easy to
+understand.&lt;/p&gt;
+
+&lt;h2 id=&#34;the-basic-logic&#34;&gt;The basic Logic&lt;/h2&gt;
+
+&lt;p&gt;Whenever we write &lt;code&gt;module &amp;quot;NAME&amp;quot; &amp;quot;https://example.com/ABC.sh&amp;quot;&lt;/code&gt;
+Module.sh replaces that line with the content from the URL, plus a
+thin wrapper.&lt;/p&gt;
+
+&lt;p&gt;That wrapper makes it available under the name and creates a
+sub-shell to separate the scope:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$name() {(
+# [download content]
+)}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;a-simple-example&#34;&gt;A simple Example&lt;/h2&gt;
+
+&lt;p&gt;Let us use the hello-world module&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;#!/bin/sh
+
+echo &amp;quot;Hello World&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;and use it in a normal script (demo.sh):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;#!/bin/sh
+set -eEuo pipefail
+
+eval &amp;quot;$(curl -fsL &amp;quot;https://mdl.sh/module/module-static-0.9.0.sh&amp;quot;)&amp;quot;
+module &amp;quot;helloWorld&amp;quot; &amp;quot;https://mdl.sh/hello-world/hello-world-1.0.0.sh&amp;quot;
+
+helloWorld
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now we will download the compiler and make it executable:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;curl -O https://mdl.sh/module-tools/compiler-0.9.0.sh
+chmod +x compiler-0.9.0.sh
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To compile the demo.sh we use the following command:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;./compiler-0.9.0.sh demo.sh demo-static.sh
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Afterwards we can see the compiled result (demo-static.sh):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;#!/bin/sh
+set -eEuo pipefail
+
+# start module https://mdl.sh/hello-world/hello-world-1.0.0.sh
+helloWorld() {(
+echo &amp;quot;Hello World&amp;quot;
+)}
+# end module https://mdl.sh/hello-world/hello-world-1.0.0.sh
+
+helloWorld
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;So basically it looks like we expected it. The lines for loading
+module.sh and loading the hello-world module got replaced by the
+content of the hello-world module plus the wrapper (and some
+additional comments).&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

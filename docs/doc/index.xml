@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Overview on Module.sh</title>
+    <link>/doc/</link>
+    <description>Recent content in Overview on Module.sh</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Tue, 06 Nov 2018 00:00:00 +0100</lastBuildDate>
+    
+	<atom:link href="/doc/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>How to create a module</title>
+      <link>/doc/how-to-create-a-module/</link>
+      <pubDate>Tue, 06 Nov 2018 00:00:00 +0100</pubDate>
+      
+      <guid>/doc/how-to-create-a-module/</guid>
+      <description>Next we are taking a look at how to create a module Creating a module is easy. In general, modules are just plain shell scripts.
+Requirements There are just two things to be aware of:
+ a shebang MUST be present (e.g., #!/bin/sh, if POSIX compliant)
+ modules should assume the function module is defined
+  Example This example module (&amp;lsquo;Greeter&amp;rsquo;) takes one argument, the name, and writes a message containing that name to standard out.</description>
+    </item>
+    
+    <item>
+      <title>How to use Module.sh</title>
+      <link>/doc/how-to-use-module.sh/</link>
+      <pubDate>Tue, 06 Nov 2018 00:00:00 +0100</pubDate>
+      
+      <guid>/doc/how-to-use-module.sh/</guid>
+      <description>After downloading Module.sh it should be straight forward to use it.
+At first it must be loaded, either by sourcing it:
+. &amp;quot;$(dirname &amp;quot;$(readlink -f &amp;quot;$0&amp;quot;)&amp;quot;)/module.sh&amp;quot;  Or by using the eval+curl chain:
+eval &amp;quot;$(curl -fsL &amp;quot;https://mdl.sh/latest&amp;quot;)&amp;quot;  Usage The usage can be described as follows:
+module [-s] name url [checksum]  So Module.sh takes
+ one optional flag -s two mandatory positional parameters one optional positional parameter  The optional flag -s controls if module.</description>
+    </item>
+    
+    <item>
+      <title>How to use the compiler</title>
+      <link>/doc/how-to-use-the-compiler/</link>
+      <pubDate>Tue, 06 Nov 2018 00:00:00 +0100</pubDate>
+      
+      <guid>/doc/how-to-use-the-compiler/</guid>
+      <description>The compiler can be use to turn scripts which use Module.sh into static scripts which contain all their dependecies and do not require Module.sh anymore. This is a great way to ensure a script will work even if the repository will be unavailable.
+Download You can download the compiler from
+https://mdl.sh/module-tools/compiler-0.9.0.sh
+On the shell:
+curl -O https://mdl.sh/module-tools/compiler-0.9.0.sh chmod +x compiler-0.9.0.sh  Usage The compiler takes 2 arguments:
+ the scripts file which should be compiled</description>
+    </item>
+    
+    <item>
+      <title>Understanding Module.sh</title>
+      <link>/doc/understanding-module.sh/</link>
+      <pubDate>Tue, 06 Nov 2018 00:00:00 +0100</pubDate>
+      
+      <guid>/doc/understanding-module.sh/</guid>
+      <description>What Module.sh does is quite simple. The complexity comes alone from making it work under different conditions. So it should be easy to understand.
+The basic Logic Whenever we write module &amp;quot;NAME&amp;quot; &amp;quot;https://example.com/ABC.sh&amp;quot; Module.sh replaces that line with the content from the URL, plus a thin wrapper.
+That wrapper makes it available under the name and creates a sub-shell to separate the scope:
+$name() {( # [download content] )}  A simple Example Let us use the hello-world module</description>
+    </item>
+    
+  </channel>
+</rss>

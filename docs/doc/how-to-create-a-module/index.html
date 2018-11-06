@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 3.0.0">
+  <meta name="generator" content="Hugo 0.51-DEV" />
+  <meta name="author" content="Module.sh">
+
+  
+  
+  
+  
+    
+  
+  <meta name="description" content="Next we are taking a look at how to create a module Creating a module is easy. In general, modules are just plain shell scripts.
+Requirements There are just two things to be aware of:
+ a shebang MUST be present (e.g., #!/bin/sh, if POSIX compliant)
+ modules should assume the function module is defined
+  Example This example module (&lsquo;Greeter&rsquo;) takes one argument, the name, and writes a message containing that name to standard out.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="/doc/how-to-create-a-module/">
+
+  
+
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <meta name="theme-color" content="#2962ff">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" crossorigin="anonymous">
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat:400,700|Roboto:400,400italic,700|Roboto+Mono">
+  
+
+  <link rel="stylesheet" href="/styles.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+  
+  
+  
+
+  
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Module.sh">
+  <link rel="feed" href="/index.xml" type="application/rss+xml" title="Module.sh">
+  
+
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="/doc/how-to-create-a-module/">
+
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="og:site_name" content="Module.sh">
+  <meta property="og:url" content="/doc/how-to-create-a-module/">
+  <meta property="og:title" content="How to create a module | Module.sh">
+  <meta property="og:description" content="Next we are taking a look at how to create a module Creating a module is easy. In general, modules are just plain shell scripts.
+Requirements There are just two things to be aware of:
+ a shebang MUST be present (e.g., #!/bin/sh, if POSIX compliant)
+ modules should assume the function module is defined
+  Example This example module (&lsquo;Greeter&rsquo;) takes one argument, the name, and writes a message containing that name to standard out.">
+  
+  
+    
+  <meta property="og:image" content="/img/icon-192.png">
+  <meta property="og:locale" content="en-us">
+  
+  <meta property="article:published_time" content="2018-11-06T00:00:00&#43;01:00">
+  
+  <meta property="article:modified_time" content="2018-11-06T00:00:00&#43;01:00">
+  
+
+  
+
+  
+
+  <title>How to create a module | Module.sh</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" >
+
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">Module.sh</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav ml-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/#about">
+            
+            <span>Home</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/#download">
+            
+            <span>Download</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/doc">
+            
+            <span>Documentation</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/faq">
+            
+            <span>FAQ</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+      
+
+        
+
+        
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+
+<div class="container-fluid docs">
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-2 docs-sidebar">
+      
+
+
+
+
+<form class="docs-search d-flex align-items-center">
+  <button class="btn docs-toggle d-md-none p-0 mr-3" type="button" data-toggle="collapse" data-target="#docs-nav" aria-controls="docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    <span><i class="fas fa-bars"></i></span>
+  </button>
+
+  
+</form>
+
+<nav class="collapse docs-links" id="docs-nav">
+  
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/doc/">Overview</a>
+
+  </div>
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/doc/how-to-use-module.sh/">Quick Start</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/doc/how-to-use-module.sh/">How to use Module.sh</a>
+      </li>
+      
+      <li >
+        <a href="/doc/how-to-use-the-compiler/">How to use the Compiler</a>
+      </li>
+      
+      <li class="active">
+        <a href="/doc/how-to-create-a-module/">How to create a Module</a>
+      </li>
+      
+      <li >
+        <a href="/doc/understanding-module.sh/">Understanding Module.sh</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  
+</nav>
+
+    </div>
+
+    
+    <div class="d-none d-xl-block col-xl-2 docs-toc">
+      
+      <p class="docs-toc-title">On this page</p>
+      
+
+      <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#requirements">Requirements</a></li>
+<li><a href="#example">Example</a></li>
+<li><a href="#best-practices">Best practices</a>
+<ul>
+<li><a href="#shebangs">Shebangs</a></li>
+<li><a href="#options">Options</a></li>
+<li><a href="#shellcheck">Shellcheck</a></li>
+</ul></li>
+<li><a href="#publishing-on-mdl-sh">Publishing on mdl.sh</a></li>
+</ul></li>
+</ul>
+</nav>
+
+      <ul class="nav toc-top">
+        <li><a href="#">Back to top</a></li>
+      </ul>
+
+      
+    </div>
+    
+
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role="main">
+      <div id="search-hits">
+        
+      </div>
+      <article class="article" itemscope itemtype="http://schema.org/Article">
+
+        <div class="docs-article-container">
+          <h1 itemprop="name">How to create a module</h1>
+
+          <div class="article-style" itemprop="articleBody">
+            
+
+<p>Next we are taking a look at how to create a module
+Creating a module is easy. In general, modules are just plain shell
+scripts.</p>
+
+<h2 id="requirements">Requirements</h2>
+
+<p>There are just two things to be aware of:</p>
+
+<ol>
+<li><p>a shebang MUST be present (e.g., <code>#!/bin/sh</code>, if POSIX compliant)</p></li>
+
+<li><p>modules should assume the function <code>module</code> is defined</p></li>
+</ol>
+
+<h2 id="example">Example</h2>
+
+<p>This example module (&lsquo;Greeter&rsquo;) takes one argument, the name, and
+writes a message containing that name to standard out. If no name is
+provided it writes an error message to standard error and returns
+error code 1:</p>
+
+<pre><code class="language-sh">#!/bin/sh
+
+name=&quot;$1&quot;
+
+if [ &quot;$name&quot; != &quot;&quot; ]; then
+	printf 'Hello %s' &quot;$name&quot;
+else
+	echo &quot;No name provided to module Greeter&quot; &gt;/dev/stderr
+	return 1
+fi
+</code></pre>
+
+<p>In order, to foster cooperation and the online availability of
+modules, module.sh doesn&rsquo;t support importing modules from
+filesystem. So if you want to use your module you should place it on
+a web-server (e.g., example.org) and load it from there:</p>
+
+<pre><code>#!/bin/sh
+
+# load module.sh
+eval &quot;$(curl -fsL &quot;https://mdl.sh/latest&quot;)&quot;
+
+# load  module greeter
+module &quot;greeter&quot; &quot;https://example.com/greeter.sh&quot;
+
+# use module greeter
+greeter &quot;Bob&quot;
+</code></pre>
+
+<p>Executing that script should result in <code>Hello Bob</code></p>
+
+<p>Since we also acknowledge that for module developers it is an
+important feature to load modules from disk (which we required
+ourselves during the development of module.sh), we added an extra
+module <a href="/doc/how-to-use-module-local/">module-local</a> to our
+repository (not published yet).</p>
+
+<h2 id="best-practices">Best practices</h2>
+
+<p>Since the strength of shell scripts is not its performance, but its
+compability to run on different platforms, we encurage POSIX
+compliance and correntness.</p>
+
+<h3 id="shebangs">Shebangs</h3>
+
+<p>If you have gone the extra mile to create a POSIX compliant script
+you can and should use the <code>#!/bin/sh</code> shebang.</p>
+
+<p>If you were lazy and used e.g., bash syntax, please use the modern
+<code>#!/usr/bin/env bash</code> shebang.</p>
+
+<h3 id="options">Options</h3>
+
+<p>Modules should not set options themselves but should be able to run
+with the following configuration:</p>
+
+<pre><code>set -eEuo pipefail
+</code></pre>
+
+<p>This means abort script execution if</p>
+
+<ul>
+<li>a command returned a non-zero error code outside of a condition
+clause (-e)</li>
+<li>even in sub-shells (-E)</li>
+<li>and pipes (-o pipefail)</li>
+<li>or if an unbound/undefined variable is used (-u)</li>
+</ul>
+
+<h3 id="shellcheck">Shellcheck</h3>
+
+<p>Another great way to help you writing awesome scripts is the tool
+<a href="https://github.com/koalaman/shellcheck" target="_blank">shellcheck</a>.</p>
+
+<h2 id="publishing-on-mdl-sh">Publishing on mdl.sh</h2>
+
+<p>If you have followed the best practices and are willing to donate
+your script to the public domain, please feel free to create a pull
+request via <a href="https://github.com/arendtio/mdl.sh" target="_blank">Github</a>.</p>
+
+          </div>
+
+          
+
+        </div>
+
+        <div class="body-footer">
+          Last updated on Nov 6, 2018
+        </div>
+
+      </article>
+
+      <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    &copy; 2018 &middot; 
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+  </p>
+</footer>
+
+
+    </main>
+  </div>
+</div>
+
+    
+
+    
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha512-+NqPlbbtM1QqiK8ZAo4Yrj2c4lNQoGv8P79DPtKzj++l5jnN39rHA/xsqn8zE9l0uSoxaCdrOgFs6yjyfbBxSg==" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.3/imagesloaded.pkgd.min.js" integrity="sha512-umsR78NN0D23AzgoZ11K7raBD+R6hqKojyBZs1w8WvYlsI+QuKRGBx3LFCwhatzBunCjDuJpDHwxD13sLMbpRA==" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha256-VsEqElsCHSGmnmHXGQzvoWjWwoznFSZc6hs7ARLRacQ=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+        
+      
+
+      
+      
+    
+
+    <script src="/js/hugo-academic.js"></script>
+    
+
+    
+    
+
+    
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js" integrity="sha256-pB/deHc9CGfFpJRjC43imB29Rse8tak+5eXqntO94ck=" crossorigin="anonymous"></script>
+    <script>
+      anchors.add();
+    </script>
+    
+
+    
+
+    
+    
+
+    
+    
+
+  </body>
+</html>
+
+
