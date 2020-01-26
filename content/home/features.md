@@ -30,13 +30,13 @@ weight = 4
 [[feature]]
   icon = "thumbs-up"
   icon_pack = "fas"
-  name = "Easy to use"
+  name = "Easy to Use"
   description = "Fetch, Execute, Done"
 
 [[feature]]
   icon = "check-circle"
   icon_pack = "fas"
   name = "Conflict Free"
-  description = "Supports multiple Versions of the same Module"
+  description = "Supports multiple versions of the same module"
   
 +++

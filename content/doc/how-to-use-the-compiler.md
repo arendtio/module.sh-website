@@ -24,13 +24,13 @@ will work even if the repository will be unavailable.
 
 You can download the compiler from
 
-[https://mdl.sh/module-tools/compiler-0.9.0.sh](https://mdl.sh/module-tools/compiler-0.9.0.sh)
+[https://mdl.sh/development/tools/compiler/compiler-static-0.9.26.sh](https://mdl.sh/development/tools/compiler/compiler-static-0.9.26.sh)
 
 On the shell:
 
 ```sh
-curl -O https://mdl.sh/module-tools/compiler-0.9.0.sh
-chmod +x compiler-0.9.0.sh
+curl -O https://mdl.sh/development/tools/compiler/compiler-static-0.9.26.sh
+chmod +x compiler-0.9.26.sh
 ```
 
 ## Usage
@@ -42,5 +42,5 @@ The compiler takes 2 arguments:
 2. the output file, which should not exist
 
 ```sh
-./compiler-0.9.0.sh demo.sh demo-static.sh
+./compiler-0.9.26.sh demo.sh demo-static.sh
 ```

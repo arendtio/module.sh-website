@@ -40,6 +40,33 @@ stronger. Just take a quick look at how the
 happens. For example:
 
 ```
-module "helloWorld" "https://mdl.sh/hello-world/hello-world-1.0.0.sh" "sha256sum-a37ed750daa549599dba74f66030bd351b41c6ea227c0b1cd596e7efc6a5cada"
+module "helloWorld" "https://mdl.sh/misc/hello-world/hello-world-1.0.1.sh" "sha256sum-b92a2908dfa6fde76550702e375939688c53b46e96cae882781e067ba8549d80"
 ```
 
+### Why should I not want to use module.sh at all?
+
+Foremost, it makes your scripts slower. There are different factors
+here:
+
+1. When you use the dynamic version, the time to fetch the module
+   obviously adds to the runtime.
+2. Modules are being wrapped in sub-shells, in order to give them a
+   separate scope. Depending on your coding style and use-case,
+   this can add quite much run time.
+
+If you use the compiler, your scripts will also increase in size.
+Not just because of the module wrapping code, but also because
+the same module might be included multiple times (if multiple
+modules depend on it). This is because we favor a simple and robust
+architecture over static script size.
+
+After all, we consider these downsides acceptable since shell coding
+is not about speed, but about composability. So if performance is an
+issue for you, you might want to take a look a different programming
+language anyway (like C, Go, Rust, et al.)
+
+### Are there any tools to help me write POSIX compliant modules?
+
+[Shellcheck](https://github.com/koalaman/shellcheck) is a good start
+and there is a nice [list](https://shellhaters.org/) with commands
+supported by POSIX complient operating system.

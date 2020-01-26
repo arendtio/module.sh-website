@@ -41,7 +41,7 @@ Let us use the hello-world module
 ```sh
 #!/bin/sh
 
-echo "Hello World"
+printf 'Hello World\n'
 ```
 
 and use it in a normal script (demo.sh):
@@ -50,8 +50,9 @@ and use it in a normal script (demo.sh):
 #!/bin/sh
 set -eEuo pipefail
 
-eval "$(curl -fsL "https://mdl.sh/module/module-static-0.9.0.sh")"
-module "helloWorld" "https://mdl.sh/hello-world/hello-world-1.0.0.sh"
+eval "$(curl -fsL
+"https://mdl.sh/development/module/online/module-static-0.9.21.sh")"
+module "helloWorld" "https://mdl.sh/misc/hello-world/hello-world-1.0.1.sh"
 
 helloWorld
 ```
@@ -59,8 +60,8 @@ helloWorld
 Now we will download the compiler and make it executable:
 
 ```sh
-curl -O https://mdl.sh/module-tools/compiler-0.9.0.sh
-chmod +x compiler-0.9.0.sh
+curl -O https://mdl.sh/development/tools/compiler/compiler-static-0.9.26.sh
+chmod +x compiler-0.9.26.sh
 ```
 
 To compile the demo.sh we use the following command:
@@ -75,11 +76,11 @@ Afterwards we can see the compiled result (demo-static.sh):
 #!/bin/sh
 set -eEuo pipefail
 
-# start module https://mdl.sh/hello-world/hello-world-1.0.0.sh
+# start module https://mdl.sh/misc/hello-world/hello-world-1.0.1.sh
 helloWorld() {(
-echo "Hello World"
+printf 'Hello World\n'
 )}
-# end module https://mdl.sh/hello-world/hello-world-1.0.0.sh
+# end module https://mdl.sh/misc/hello-world/hello-world-1.0.1.sh
 
 helloWorld
 ```

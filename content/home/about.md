@@ -31,7 +31,7 @@ before execution.
 eval "$(curl -fsL "https://mdl.sh/latest")"
 
 # using module.sh to load the hello-world module
-module "helloWorld" "https://mdl.sh/hello-world/hello-world-1.0.0.sh" "cksum-1466632224"
+module "helloWorld" "https://mdl.sh/misc/hello-world/hello-world-1.0.1.sh" "cksum-3769348439"
 
 # executing the loaded module
 helloWorld

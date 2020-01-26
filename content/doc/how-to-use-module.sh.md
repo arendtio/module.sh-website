@@ -71,13 +71,13 @@ commands can be used:
 For cksum:
 
 ```sh
-printf 'cksum-%s\n' "$(printf '%s' "$(curl -fsL "https://mdl.sh/hello-world/hello-world-1.0.0.sh")" | cksum | cut -d ' ' -f1)"
+printf 'cksum-%s\n' "$(printf '%s' "$(curl -fsL "https://mdl.sh/misc/hello-world/hello-world-1.0.1.sh")" | cksum | cut -d ' ' -f1)"
 ```
 
 For md5sum:
 
 ```sh
-printf 'md5sum-%s\n' "$(printf '%s' "$(curl -fsL "https://mdl.sh/hello-world/hello-world-1.0.0.sh")" | md5sum | cut -d ' ' -f1)"
+printf 'md5sum-%s\n' "$(printf '%s' "$(curl -fsL "https://mdl.sh/misc/hello-world/hello-world-1.0.1.sh")" | md5sum | cut -d ' ' -f1)"
 ```
 
 In general, we recommend using cksum as it is part of POSIX. If the
