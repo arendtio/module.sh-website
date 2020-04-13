@@ -1,79 +1,53 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
-    
+  <url>
+    <loc>/authors/admin/</loc>
+  </url>
   
-    
-    <url>
-    
-      <loc>/faq/</loc>
-      <lastmod>2018-11-06T00:00:00+01:00</lastmod>
-    </url>
-    
+  <url>
+    <loc>/authors/</loc>
+  </url>
   
-    
-    <url>
-    
-      <loc>/doc/how-to-create-a-module/</loc>
-      <lastmod>2018-11-06T00:00:00+01:00</lastmod>
-    </url>
-    
+  <url>
+    <loc>/categories/</loc>
+  </url>
   
-    
-    <url>
-    
-      <loc>/doc/how-to-use-module.sh/</loc>
-      <lastmod>2018-11-06T00:00:00+01:00</lastmod>
-    </url>
-    
+  <url>
+    <loc>/faq/</loc>
+  </url>
   
-    
-    <url>
-    
-      <loc>/doc/how-to-use-the-compiler/</loc>
-      <lastmod>2018-11-06T00:00:00+01:00</lastmod>
-    </url>
-    
+  <url>
+    <loc>/doc/how-to-create-a-module/</loc>
+  </url>
   
-    
-    <url>
-    
-      <loc>/doc/</loc>
-      <lastmod>2018-11-06T00:00:00+01:00</lastmod>
-    </url>
-    
+  <url>
+    <loc>/doc/how-to-use-module.sh/</loc>
+  </url>
   
-    
-    <url>
-    
-      <loc>/doc/understanding-module.sh/</loc>
-      <lastmod>2018-11-06T00:00:00+01:00</lastmod>
-    </url>
-    
+  <url>
+    <loc>/doc/how-to-use-the-compiler/</loc>
+  </url>
   
-    
-    <url>
-    
-      <loc>/categories/</loc>
-      <priority>0</priority>
-    </url>
-    
+  <url>
+    <loc>/</loc>
+  </url>
   
-    
-    <url>
-    
-      <loc>/</loc>
-      <lastmod>2017-10-15T00:00:00+02:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
+  <url>
+    <loc>/doc/</loc>
+  </url>
   
-    
-    <url>
-    
-      <loc>/tags/</loc>
-      <priority>0</priority>
-    </url>
-    
+  <url>
+    <loc>/publication_types/</loc>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+  </url>
+  
+  <url>
+    <loc>/doc/understanding-module.sh/</loc>
+  </url>
   
 </urlset>

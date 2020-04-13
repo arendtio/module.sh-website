@@ -1,38 +1,39 @@
-<!DOCTYPE html>
-<html lang="en-us">
+<!DOCTYPE html><html lang="en-us" >
+
 <head>
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="generator" content="Source Themes Academic 3.0.0">
-  <meta name="generator" content="Hugo 0.51-DEV" />
-  <meta name="author" content="Module.sh">
+  <meta name="generator" content="Source Themes Academic 4.8.0">
+
+  
 
   
   
   
   
+  
+    
+    
     
   
-  <meta name="description" content="The compiler can be use to turn scripts which use Module.sh into static scripts which contain all their dependecies and do not require Module.sh anymore. This is a great way to ensure a script will work even if the repository will be unavailable.
-Download You can download the compiler from
-https://mdl.sh/module-tools/compiler-0.9.0.sh
-On the shell:
-curl -O https://mdl.sh/module-tools/compiler-0.9.0.sh chmod &#43;x compiler-0.9.0.sh  Usage The compiler takes 2 arguments:
- the scripts file which should be compiled">
+  
+
+  <meta name="author" content="Module.sh">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="The compiler can be use to turn scripts which use Module.sh into static scripts which contain all their dependecies and do not require Module.sh anymore. This is a great way to ensure a script will work even if the repository will be unavailable.">
 
   
   <link rel="alternate" hreflang="en-us" href="/doc/how-to-use-the-compiler/">
 
   
 
-
-  
-
-  
-
-  
 
   
   
@@ -42,13 +43,15 @@ curl -O https://mdl.sh/module-tools/compiler-0.9.0.sh chmod &#43;x compiler-0.9.
 
   
   
+
+  
+  
   
   
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css" integrity="sha256-4w9DunooKSr3MFXHXWyFER38WmPdm361bQS/2KUWZbU=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
 
     
     
@@ -56,94 +59,275 @@ curl -O https://mdl.sh/module-tools/compiler-0.9.0.sh chmod &#43;x compiler-0.9.
       
     
     
+      
+      
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/github.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css" integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin="anonymous">
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
       
       
         
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" crossorigin="anonymous">
-        
+      
+
+      
+    
+      
+
+      
+      
+
       
     
 
-    
-
-    
-
-  
-
-  
-  
-  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat:400,700|Roboto:400,400italic,700|Roboto+Mono">
-  
-
-  <link rel="stylesheet" href="/styles.css">
-  
-  <link rel="stylesheet" href="/css/style.css">
   
 
   
   
   
-
-  
-  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Module.sh">
-  <link rel="feed" href="/index.xml" type="application/rss+xml" title="Module.sh">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
   
 
-  <link rel="manifest" href="/site.webmanifest">
-  <link rel="icon" type="image/png" href="/img/icon.png">
-  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+  
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png">
 
   <link rel="canonical" href="/doc/how-to-use-the-compiler/">
 
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
   <meta property="twitter:card" content="summary_large_image">
   
   <meta property="og:site_name" content="Module.sh">
   <meta property="og:url" content="/doc/how-to-use-the-compiler/">
   <meta property="og:title" content="How to use the compiler | Module.sh">
-  <meta property="og:description" content="The compiler can be use to turn scripts which use Module.sh into static scripts which contain all their dependecies and do not require Module.sh anymore. This is a great way to ensure a script will work even if the repository will be unavailable.
-Download You can download the compiler from
-https://mdl.sh/module-tools/compiler-0.9.0.sh
-On the shell:
-curl -O https://mdl.sh/module-tools/compiler-0.9.0.sh chmod &#43;x compiler-0.9.0.sh  Usage The compiler takes 2 arguments:
- the scripts file which should be compiled">
-  
+  <meta property="og:description" content="The compiler can be use to turn scripts which use Module.sh into static scripts which contain all their dependecies and do not require Module.sh anymore. This is a great way to ensure a script will work even if the repository will be unavailable."><meta property="og:image" content="/img/logo.svg">
+  <meta property="twitter:image" content="/img/logo.svg"><meta property="og:locale" content="en-us">
   
     
-  <meta property="og:image" content="/img/icon-192.png">
-  <meta property="og:locale" content="en-us">
-  
-  <meta property="article:published_time" content="2018-11-06T00:00:00&#43;01:00">
-  
-  <meta property="article:modified_time" content="2018-11-06T00:00:00&#43;01:00">
+    
   
 
   
 
+
+
   
+
+
+  
+
+
+  
+
+
+
+
 
   <title>How to use the compiler | Module.sh</title>
 
 </head>
-<body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" >
 
-<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0" id="navbar-main">
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
   <div class="container">
 
     
+    <div class="d-none d-lg-inline-flex">
       <a class="navbar-brand" href="/">Module.sh</a>
-      
-      <button type="button" class="navbar-toggler" data-toggle="collapse"
-              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
-        <span><i class="fas fa-bars"></i></span>
-      </button>
-      
+    </div>
+    
 
     
-    <div class="collapse navbar-collapse" id="navbar">
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">Module.sh</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-end" id="navbar-content">
 
       
-      
-      <ul class="navbar-nav ml-auto">
+      <ul class="navbar-nav d-md-inline-flex">
         
 
         
@@ -154,12 +338,22 @@ curl -O https://mdl.sh/module-tools/compiler-0.9.0.sh chmod &#43;x compiler-0.9.
           
         
 
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
         <li class="nav-item">
-          <a class="nav-link" href="/#about">
-            
-            <span>Home</span>
-            
-          </a>
+          <a class="nav-link " href="/#about"><span>Home</span></a>
         </li>
 
         
@@ -173,12 +367,22 @@ curl -O https://mdl.sh/module-tools/compiler-0.9.0.sh chmod &#43;x compiler-0.9.
           
         
 
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
         <li class="nav-item">
-          <a class="nav-link" href="/#download">
-            
-            <span>Download</span>
-            
-          </a>
+          <a class="nav-link " href="/#download"><span>Download</span></a>
         </li>
 
         
@@ -190,12 +394,15 @@ curl -O https://mdl.sh/module-tools/compiler-0.9.0.sh chmod &#43;x compiler-0.9.
         
         
 
+        
+        
+        
+        
+        
+        
+
         <li class="nav-item">
-          <a class="nav-link" href="/doc">
-            
-            <span>Documentation</span>
-            
-          </a>
+          <a class="nav-link  active" href="/doc"><span>Documentation</span></a>
         </li>
 
         
@@ -207,34 +414,53 @@ curl -O https://mdl.sh/module-tools/compiler-0.9.0.sh chmod &#43;x compiler-0.9.
         
         
 
+        
+        
+        
+        
+        
+        
+
         <li class="nav-item">
-          <a class="nav-link" href="/faq">
-            
-            <span>FAQ</span>
-            
-          </a>
+          <a class="nav-link " href="/faq"><span>FAQ</span></a>
         </li>
 
         
         
 
       
-
-        
 
         
       </ul>
-
     </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+
+      
+
+      
+
+    </ul>
+
   </div>
 </nav>
 
 
+  
 
 <div class="container-fluid docs">
   <div class="row flex-xl-nowrap">
     <div class="col-12 col-md-3 col-xl-2 docs-sidebar">
       
+
+
+
+
+
+  
+    
+  
 
 
 
@@ -248,6 +474,10 @@ curl -O https://mdl.sh/module-tools/compiler-0.9.0.sh chmod &#43;x compiler-0.9.
 </form>
 
 <nav class="collapse docs-links" id="docs-nav">
+  
+
+  
+  
   
   
   <div class="docs-toc-item">
@@ -287,78 +517,95 @@ curl -O https://mdl.sh/module-tools/compiler-0.9.0.sh chmod &#43;x compiler-0.9.
 
     
     <div class="d-none d-xl-block col-xl-2 docs-toc">
-      
-      <p class="docs-toc-title">On this page</p>
-      
+      <ul class="nav toc-top">
+        <li><a href="#" id="back_to_top" class="docs-toc-title">Contents</a></li>
+      </ul>
 
       <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#download">Download</a></li>
-<li><a href="#usage">Usage</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#download">Download</a></li>
+    <li><a href="#usage">Usage</a></li>
+  </ul>
 </nav>
-
-      <ul class="nav toc-top">
-        <li><a href="#">Back to top</a></li>
-      </ul>
 
       
     </div>
     
 
     <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role="main">
-      <div id="search-hits">
-        
-      </div>
-      <article class="article" itemscope itemtype="http://schema.org/Article">
+
+      <article class="article">
 
         <div class="docs-article-container">
-          <h1 itemprop="name">How to use the compiler</h1>
+          <h1>How to use the compiler</h1>
 
-          <div class="article-style" itemprop="articleBody">
-            
-
-<p>The compiler can be use to turn scripts which use Module.sh into
+          <div class="article-style">
+            <p>The compiler can be use to turn scripts which use Module.sh into
 static scripts which contain all their dependecies and do not
 require Module.sh anymore. This is a great way to ensure a script
 will work even if the repository will be unavailable.</p>
-
 <h2 id="download">Download</h2>
-
 <p>You can download the compiler from</p>
-
-<p><a href="https://mdl.sh/module-tools/compiler-0.9.0.sh" target="_blank">https://mdl.sh/module-tools/compiler-0.9.0.sh</a></p>
-
+<p>
+<a href="https://mdl.sh/development/tools/compiler/compiler-static-0.9.26.sh" target="_blank" rel="noopener">https://mdl.sh/development/tools/compiler/compiler-static-0.9.26.sh</a></p>
 <p>On the shell:</p>
-
-<pre><code class="language-sh">curl -O https://mdl.sh/module-tools/compiler-0.9.0.sh
-chmod +x compiler-0.9.0.sh
+<pre><code class="language-sh">curl -O https://mdl.sh/development/tools/compiler/compiler-static-0.9.26.sh
+chmod +x compiler-0.9.26.sh
 </code></pre>
-
 <h2 id="usage">Usage</h2>
-
 <p>The compiler takes 2 arguments:</p>
-
 <ol>
-<li><p>the scripts file which should be compiled</p></li>
-
-<li><p>the output file, which should not exist</p></li>
+<li>
+<p>the scripts file which should be compiled</p>
+</li>
+<li>
+<p>the output file, which should not exist</p>
+</li>
 </ol>
-
-<pre><code class="language-sh">./compiler-0.9.0.sh demo.sh demo-static.sh
+<pre><code class="language-sh">./compiler-0.9.26.sh demo.sh demo-static.sh
 </code></pre>
 
           </div>
 
           
 
+
+
+          
+          <div class="article-widget">
+            
+<div class="post-nav">
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Previous</div>
+    <a href="/doc/how-to-use-module.sh/" rel="next">How to use Module.sh</a>
+  </div>
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Next</div>
+    <a href="/doc/understanding-module.sh/" rel="prev">Understanding Module.sh</a>
+  </div>
+  
+</div>
+
+          </div>
+          
         </div>
 
         <div class="body-footer">
-          Last updated on Nov 6, 2018
+          <p>Last updated on Jan 1, 0001</p>
+
+          
+
+
+
+
+          
+
         </div>
 
       </article>
@@ -367,7 +614,7 @@ chmod +x compiler-0.9.0.sh
   
 
   <p class="powered-by">
-    &copy; 2018 &middot; 
+    © 2020 &middot; 
 
     Powered by the
     <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
@@ -382,43 +629,42 @@ chmod +x compiler-0.9.0.sh
   </div>
 </div>
 
-    
+
+      
 
     
     
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
 
-    
-    
-    
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha512-+NqPlbbtM1QqiK8ZAo4Yrj2c4lNQoGv8P79DPtKzj++l5jnN39rHA/xsqn8zE9l0uSoxaCdrOgFs6yjyfbBxSg==" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.3/imagesloaded.pkgd.min.js" integrity="sha512-umsR78NN0D23AzgoZ11K7raBD+R6hqKojyBZs1w8WvYlsI+QuKRGBx3LFCwhatzBunCjDuJpDHwxD13sLMbpRA==" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha256-VsEqElsCHSGmnmHXGQzvoWjWwoznFSZc6hs7ARLRacQ=" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+      
 
       
         
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js" integrity="sha256-eOgo0OtLL4cdq7RdwRUiGKLX9XsIJ7nGhWEKbohmVAQ=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/shell.min.js"></script>
         
       
 
-      
-      
-    
-
-    <script src="/js/hugo-academic.js"></script>
     
 
     
     
-
-    
-    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js" integrity="sha256-EErZamuLefUnbMBQbsEqu1USa+btR2oIlCpBJbyD4/g=" crossorigin="anonymous"></script>
     
 
     
     
-    <script>hljs.initHighlightingOnLoad();</script>
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    <script>const isSiteThemeDark = false;</script>
     
 
     
@@ -439,7 +685,61 @@ chmod +x compiler-0.9.0.sh
     
     
 
-  </body>
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <script src="/js/academic.min.6f7ce8be710290b8c431bbc97f405d15.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
 </html>
-
-

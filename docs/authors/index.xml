@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Authors | Module.sh</title>
+    <link>/authors/</link>
+      <atom:link href="/authors/index.xml" rel="self" type="application/rss+xml" />
+    <description>Authors</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2020</copyright>
+    <image>
+      <url>/img/logo.svg</url>
+      <title>Authors</title>
+      <link>/authors/</link>
+    </image>
+    
+    <item>
+      <title></title>
+      <link>/authors/admin/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/authors/admin/</guid>
+      <description>&lt;p&gt;Reusing shell scripts is hard as packaging is often complicated by
+itself and therefore they live scattered all over our disks and when
+we need a specific one the search begins.&lt;/p&gt;
+&lt;p&gt;Module.sh is set to improve upon that situation. It can fetch the
+required script easily from the internet, either at runtime or it
+can build you a script which embeds all its script dependencies.&lt;/p&gt;
+&lt;p&gt;While that might sound like it has a few challenges by its own,
+Module.sh does so while caching fetched scripts and checking checksums
+before execution.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#!/bin/sh
+# yes, we aim to be POSIX compliant
+
+# loading module.sh, if curl+eval is a problem, there are ways to avoid them
+eval &amp;quot;$(curl -fsL &amp;quot;https://mdl.sh/latest&amp;quot;)&amp;quot;
+
+# using module.sh to load the hello-world module
+module &amp;quot;helloWorld&amp;quot; &amp;quot;https://mdl.sh/misc/hello-world/hello-world-1.0.1.sh&amp;quot; &amp;quot;cksum-3769348439&amp;quot;
+
+# executing the loaded module
+helloWorld
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If you don&amp;rsquo;t want to rely on an external service: you don&amp;rsquo;t have
+to. Actually, there are many reasons to host your scripts on your
+own server.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
